@@ -3,12 +3,12 @@ var questionArr = [
     {
 
         
-        question: '1. Inside which HTML element do we put the JavaScript?',
-        answer1: '&lt;script&gt;',
-        answer2: '&lt;js&gt;',
-        answer3: '&lt;scripting&gt;',
-        answer4: '&lt;javascript&gt;',
-        corAns: '&lt;script&gt;'
+        question: '1. A very useful tool used during development and debugging for printing content to the debugger is',
+        answer1: 'JavaScript',
+        answer2: 'terminal/bash',
+        answer3: 'for loops',
+        answer4: 'console.log',
+        corAns: '4'
     },
     {
         question: '2. If HTML is for structure, and CSS is for style. What is JS for?',
@@ -27,20 +27,20 @@ var questionArr = [
         corAns: '1'
     },
     {
-        question: '4. Select the suitable variable assignment',
-        opt1: 'GASGas = 23',
-        opt2: 'gas123 = 23',
-        opt3: 'var gas = 23',
-        opt4: 'gas-123 = 23',
-        corAns: '3'
+        question: '4. Arrays in JavaScript can be used to store _______.',
+        opt1: 'numbers and strings',
+        opt2: 'other arrays',
+        opt3: 'booleans',
+        opt4: 'all of the above',
+        corAns: '4'
     },
     {
-        question: '5. Select the option to make a list that lists the items with bullets?',
-        answer1: 'Dl',
-        answer2: 'Ul',
-        answer3: 'List',
-        answer4: 'Ol',
-        corAns: 'Ul'
+        question: '5. The condition in an if / else statement is enclosed with _______.',
+        answer1: 'curly brackets',
+        answer2: 'parenthesis',
+        answer3: 'quotes',
+        answer4: 'square brackets',
+        corAns: '2'
     },
     {
         question: '6. For users that use the tab key to navigate websites, what property represents this way of moving from one element to another?',
