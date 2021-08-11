@@ -178,3 +178,136 @@ window.addEventListener('load', function (ev) {
         // Update the high scores
         renderHighScores();
     });
+
+
+    //Functions
+
+    // Updates question element
+    // Index = current question
+    function renderQuestion(index) {
+        // Get the question title from the HTML
+        var quizQuestionTitle = quizQuestion.querySelector('.quiz-question-title');
+        // Get the answer list from the HTML
+        var answerList = quizQuestion.querySelectorAll('li');
+        // Make the correct element invisible
+        correct.style.display = 'none';
+        // Make the wrong element invisible
+        wrong.style.display = 'none';
+        // Update the question title to the title of the current question
+        quizQuestionTitle.textContent = questionArr[index].question;
+
+        // Format how each answer will look
+        answerList.forEach(function (li) {
+            li.className = '';
+            li.style.backgroundColor = '#000091';
+        });
+
+        // Set the HTML answers to the answers from the question array.
+        answerList[0].textContent = questionArr[index].answer1;
+        answerList[1].textContent = questionArr[index].answer2;
+        answerList[2].textContent = questionArr[index].answer3;
+        answerList[3].textContent = questionArr[index].answer4;
+    }
+    // Clears old leaderboard and writes new leaderboard
+    function renderHighScores(){
+        // Clear the screen
+        highScoreList.innerHTML = '';
+        // Get the new leaderboard
+        var leaderboard = JSON.parse(localStorage.getItem('scoreRecord'));
+        // Add on to the final scoreboard
+        leaderboard.forEach(function(ele){
+            var playerList = document.createElement('li');
+            playerList.textContent = ele;
+            // Append new player-score to leaderboard
+            highScoreList.appendChild(playerList);
+        });
+    }
+
+    var score = 0;
+
+    function questionChange() {
+        // Current question
+        var index = 0;
+        questionList.forEach(function (questionBox) {
+            correct.style.display = '';
+            wrong.style.display = '';
+            // Wait for the player to click on an answer
+            questionBox.addEventListener('click', function () {
+                questionBox.style.backgroundColor = "#99ccff";
+                // when the answer is correct, the correct part shows and score +1. when get the wrong answer, the wrong part shows and timer -5
+                if (questionBox.innerHTML === questionArr[index].corAns) {
+                    // Add to your score
+                    score++;
+                    // Make the "Correct" element visible
+                    correct.style.display = 'block';
+                } else {
+                    // Make the "Wrong" element visible
+                    wrong.style.display = 'block';
+                    // Deduct 10 seconds from timer
+                    timer -= 10;
+                }
+
+                // Set the score element in HTML = to the final score
+                // The final score is determined by this formula
+                scoreNum.textContent = score * parseInt(80 / questionArr.length) + parseInt(timer / 5);
+
+                // set a timeout for every question
+                // Creates a pause in between questions
+                clearTimeout(timeoutID);
+                timeoutID = setTimeout(function () {
+                    // If you just answered the last question
+                    if (index >= questionArr.length - 1) {
+                        // Make all elements invisible except the submit element
+                        quizQuestion.style.display = 'none';
+                        quizSubmit.style.display = 'block';
+                        correct.style.display = 'none';
+                        wrong.style.display = 'none';
+                    // If that was not the final question
+                    } else {
+                        // Increase the question number
+                        index++;
+                    }
+
+                    // Display the questions
+                    renderQuestion(index);
+                    clearTimeout(timeoutID);
+                }, 800);
+
+            });
+
+        });
+    }
+
+});
+
+
+var timer;
+var countdownTimer = document.getElementById('timer-num');
+var quizSubmit = document.getElementById('quiz-submit');
+
+
+// timer used for the quiz
+function resetTimer() {
+    // timer gets 15 seconds for each question
+    timer = 15 * questionArr.length;
+    // set HTML timer to the javascript timer
+    countdownTimer.textContent = timer;
+
+    // start the timer controlling the game timer
+    setInterval(function () {
+        // count down 1 second
+        timer--;
+        // update the HTML timer
+        countdownTimer.textContent = timer;
+        
+        // Alert once time is up
+        if (timer <= 0) {
+            timer = 0;
+            alert('Times Up!');
+        }
+        // if the submit page is visible, set the timer to 0
+        if (quizSubmit.style.display === 'block') {
+            countdownTimer.textContent = "0";
+        }
+    }, 1000);
+}
