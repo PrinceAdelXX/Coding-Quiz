@@ -1,6 +1,8 @@
 // List of all questions in the quiz
 var questionArr = [
     {
+
+        
         question: '1. Inside which HTML element do we put the JavaScript?',
         answer1: '&lt;script&gt;',
         answer2: '&lt;js&gt;',
@@ -9,28 +11,28 @@ var questionArr = [
         corAns: '&lt;script&gt;'
     },
     {
-        question: '2. Select the property that is used to create spacing between HTML elements?',
-        answer1: 'spacing',
-        answer2: 'margin',
-        answer3: 'border',
-        answer4: 'padding',
-        corAns: 'margin'
+        question: '2. If HTML is for structure, and CSS is for style. What is JS for?',
+        answer1: 'Nothing, Python rules',
+        answer2: 'Function and dynamics',
+        answer3: 'It rules CSS and HTML',
+        answer4: "it's a browser database",
+        corAns: '2'
     },
     {
-        question: '3. In CSS,select the property used to set the background color of an image?',
-        answer1: 'color:background',
-        answer2: 'background:color',
-        answer3: 'color',
-        answer4: 'background-color',
-        corAns: 'background-color'
+        question: '3. Which property gives you the length of a string?',
+        opt1: 'length',
+        opt2: 'len',
+        opt3: 'ln',
+        opt4: 'none of these work',
+        corAns: '1'
     },
     {
-        question: '4. In CSS,Select the property used to set the spacing in between lines of text?',
-        answer1: 'letter-spacing',
-        answer2: 'spacing',
-        answer3: 'line-height',
-        answer4: 'line-spacing',
-        corAns: 'line-height'
+        question: '4. Select the suitable variable assignment',
+        opt1: 'GASGas = 23',
+        opt2: 'gas123 = 23',
+        opt3: 'var gas = 23',
+        opt4: 'gas-123 = 23',
+        corAns: '3'
     },
     {
         question: '5. Select the option to make a list that lists the items with bullets?',
